@@ -15,42 +15,44 @@
 
     h1 {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    /* Section header */
+    /* SECTION HEADERS */
     .section-title {
       font-size: 22px;
-      margin: 28px 0 10px;
+      margin: 30px 0 8px;
     }
 
     .divider {
       border: none;
       height: 1px;
-      background: rgba(255,255,255,0.2);
-      margin: 0 0 14px;
+      background: rgba(255,255,255,0.25);
+      margin-bottom: 14px;
     }
 
-    /* Horizontal scroll row */
+    /* HORIZONTAL ROW */
     .row {
       display: flex;
       gap: 16px;
       overflow-x: auto;
       padding-bottom: 12px;
       scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch; /* smooth on iPhone */
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* optional: nicer scrollbar (Chrome) */
-    .row::-webkit-scrollbar { height: 10px; }
+    .row::-webkit-scrollbar {
+      height: 8px;
+    }
+
     .row::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.2);
       border-radius: 999px;
     }
 
-    /* Cards in horizontal row */
+    /* CARD */
     .card {
-      flex: 0 0 240px; /* card width */
+      flex: 0 0 240px;
       background: #121212;
       border-radius: 12px;
       padding: 16px;
@@ -72,26 +74,18 @@
     }
 
     button {
-      margin-top: 10px;
-      padding: 10px 14px;
+      width: 100%;
+      padding: 10px;
       border: none;
       border-radius: 8px;
       background: #007aff;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      width: 100%;
     }
 
     button:hover {
       background: #005edc;
-    }
-
-    /* small helper text */
-    .hint {
-      color: rgba(255,255,255,0.65);
-      font-size: 13px;
-      margin: 0 0 10px;
     }
   </style>
 </head>
@@ -99,22 +93,17 @@
 <body>
   <h1>Wishlist</h1>
 
-  <!-- SECTION 1 -->
+  <!-- ===================== -->
+  <!-- WANTED SET -->
+  <!-- ===================== -->
   <div class="section">
     <div class="section-title">Wanted Set</div>
     <hr class="divider">
-    <p class="hint">Scroll sideways →</p>
 
-    <div class="row">
-      <div class="card">
-        <img src="MarshallDTeach.png" class="item-img" alt="Marshall D Teach OP09">
-        <h2>Marshall D. Teach</h2>
-        <button onclick="openLink('https://www.tcgplayer.com/product/597037/one-piece-card-game--marshall-d-teach-093-wanted-poster?Language=English')">
-          View Item
-        </button>
-      </div>
+    <div class="row" data-sort>
+      <!-- LOWER NUMBER = SHOWS FIRST -->
 
-      <div class="card">
+      <div class="card" data-order="1">
         <img src="WantedLuffyOP09.png" class="item-img" alt="Wanted Luffy OP09">
         <h2>Wanted Luffy OP09</h2>
         <button onclick="openLink('https://www.tcgplayer.com/product/596915/one-piece-card-game--monkey-d-luffy-wanted-poster?Language=English')">
@@ -122,30 +111,48 @@
         </button>
       </div>
 
-      <!-- Add more Wanted cards by copying another .card block -->
+      <div class="card" data-order="2">
+        <img src="MarshallDTeach.png" class="item-img" alt="Marshall D Teach OP09">
+        <h2>Marshall D. Teach</h2>
+        <button onclick="openLink('https://www.tcgplayer.com/product/597037/one-piece-card-game--marshall-d-teach-093-wanted-poster?Language=English')">
+          View Item
+        </button>
+      </div>
+
     </div>
   </div>
 
-  <!-- SECTION 2 -->
+  <!-- ===================== -->
+  <!-- GIFT COLLECTION 2023 -->
+  <!-- ===================== -->
   <div class="section">
     <div class="section-title">Gift Collection 2023</div>
     <hr class="divider">
-    <p class="hint">Scroll sideways →</p>
 
-    <div class="row">
-      <div class="card">
+    <div class="row" data-sort>
+      <div class="card" data-order="1">
         <img src="Uta2023Collection.png" class="item-img" alt="Uta 2023 Collection">
         <h2>Uta 2023 Collection</h2>
         <button onclick="openLink('https://www.tcgplayer.com/product/523802/one-piece-card-game--uta-gift-collection-2023?Language=English')">
           View Item
         </button>
       </div>
-
-      <!-- Add more Gift Collection cards by copying another .card block -->
     </div>
   </div>
 
+  <!-- ===================== -->
+  <!-- SCRIPT -->
+  <!-- ===================== -->
   <script>
+    // Sort cards INSIDE each row by data-order
+    document.querySelectorAll('[data-sort]').forEach(row => {
+      const cards = Array.from(row.children);
+
+      cards
+        .sort((a, b) => (a.dataset.order || 0) - (b.dataset.order || 0))
+        .forEach(card => row.appendChild(card));
+    });
+
     function openLink(url) {
       window.open(url, '_blank');
     }
