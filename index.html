@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Wishlist</title>
+  <title>Wishlist</title>
 
   <style>
     body {
@@ -23,12 +23,13 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
     }
-  
+
     .card {
-      background: #111111;
+      background: #121212;
+      color: white;
       border-radius: 12px;
       padding: 16px;
-      box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
       text-align: center;
     }
 
@@ -38,17 +39,24 @@
     }
 
     button {
-      background: #1e90ff;
-    }
-    button:hover {
-      background: #1873cc;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #007aff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
     }
 
+    button:hover {
+      background: #005edc;
+    }
   </style>
 </head>
 
 <body>
-  <h1>My Wishlist</h1>
+  <h1>Wishlist</h1>
 
   <div class="wishlist">
     <div class="card">
