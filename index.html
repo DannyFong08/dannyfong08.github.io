@@ -1,8 +1,86 @@
 <!doctype html>
-<html>
-  <body>
-    <h1>Wishlist test</h1>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Wishlist</title>
 
-    <button onclick="alert('JS is working!')">Click me</button>
-  </body>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .wishlist {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 50px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #007aff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005edc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Wishlist</h1>
+
+  <div class="wishlist">
+    <div class="card">
+      <div class="icon">🎧</div>
+      <h2>Headphones</h2>
+      <button onclick="openLink('https://example.com')">View Item</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">👟</div>
+      <h2>Shoes</h2>
+      <button onclick="openLink('https://example.com')">View Item</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h2>Game Controller</h2>
+      <button onclick="openLink('https://example.com')">View Item</button>
+    </div>
+  </div>
+
+  <script>
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
 </html>
