@@ -9,9 +9,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="apple-touch-icon" href="icon-192.png">
 
-  if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js");
-}
+
 
   <style>
     /* ===== Animated gradient background (still dark) ===== */
@@ -342,6 +340,10 @@
   <!-- SCRIPT -->
   <!-- ===================== -->
   <script>
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+    }
+
     // Sort cards INSIDE each row by data-order
     document.querySelectorAll('[data-sort]').forEach(row => {
       const cards = Array.from(row.children);
